@@ -1,0 +1,98 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Fondo suave */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+/* Posicionar el enlace en la parte superior izquierda */
+.volver-link {
+    position: absolute;
+    top: 10px; /* Ajusta según el espacio que quieras */
+    left: 10px; /* Ajusta según el espacio que quieras */
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Cambiar el color al hacer hover sobre el enlace */
+.volver-link:hover {
+    color: #0056b3;
+}
+
+/* Centrar el contenedor principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Estilos para el contenedor del formulario */
+.container {
+    background-color: #ffffff;
+    padding: 30px; /* Reducir el padding para hacerlo más compacto */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Hacer el formulario más estrecho */
+    width: 100%;
+    text-align: center; /* Alineación centrada del contenido */
+    margin-top: -70px; /* Aumentar esta propiedad según sea necesario */
+}
+
+/* Estilos para las etiquetas */
+.form-label {
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 5px; /* Reducir el espacio entre etiqueta e input */
+}
+
+/* Estilos para los inputs */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 8px; /* Reducir el padding interno */
+    margin-bottom: 10px; /* Reducir el margen inferior */
+    font-size: 14px; /* Reducir tamaño de fuente */
+    transition: border-color 0.3s;
+}
+
+/* Cambio de borde cuando el input está enfocado */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilos para los botones */
+.btn {
+    border-radius: 6px;
+    padding: 8px 16px; /* Reducir padding para botones */
+    font-size: 14px; /* Reducir tamaño de fuente */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Cambio de color en hover de los botones */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Estilo para el botón de cancelar */
+.btn-primary[role="button"] {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-primary[role="button"]:hover {
+    background-color: #5a6268;
+    border-color: #4e555b;
+}
+
