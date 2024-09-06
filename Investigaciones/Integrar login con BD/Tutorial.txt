@@ -1,0 +1,22 @@
+A considerar:
+
+PRIMER VIDEO: https://www.youtube.com/watch?v=IW0sR_ms1Fo&ab_channel=GABRIELHDS
+
+1. Crear archivos ".php" para conectar con la base de datos.
+2. Crear la base de datos (en phpmyadmin).
+3. Ingresar datos para funcionar el login.
+
+SEGUNDO VIDEO: https://www.youtube.com/watch?v=AWjCxj9D_Ko&ab_channel=GABRIELHDS
+
+1. Poder diferenciar entre usuarios (paciente y administrador)
+2. Mostrar diferentes tipos de cosas a cada usuario (admins tienen privilegios)
+3. Negar el acceso, ya sea usuario, admin, o no logeado.
+
+General:
+
+1. Hacer uso de scripst en archivos ".php" para hacer consultas, verificar datos y llamar a la base de datos.
+2. Hacer un apartado de Registro y otro de Login.
+
+
+
+
