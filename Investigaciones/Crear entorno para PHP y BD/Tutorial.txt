@@ -1,0 +1,18 @@
+A considerar:
+
+PRIMER VIDEO: https://www.youtube.com/watch?v=Rg0CZTUg04o&ab_channel=divcode (Corto y rapido)
+
+SEGUNDO VIDEO: https://www.youtube.com/watch?v=3_nmRdk4mts&ab_channel=MrTecnoJavi (Un poco mas largo y explicativo)
+
+1. Usar XAMPP (Como servidor local)
+2. En el video se ve un código ".php" pero también se puede usar uno ".html" (Los ".php" se usan para scripts y consultas)
+3. Incorporar la BD a phpmyadmin
+4. Abrir en localhost (Para abrirlo como pagina web y no como archivo)
+
+(Probar El Codigo (Crear una BD "ejemplo" sin nada solo crearla) .php)
+(Probar el código de la pagina de salud (Para abrirlo como pagina web y no como archivo))
+
+
+
+
+
