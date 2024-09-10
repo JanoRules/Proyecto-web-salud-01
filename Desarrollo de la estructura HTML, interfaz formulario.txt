@@ -1,0 +1,186 @@
+Comienzo del Desarrollo de la estructura HTML, interfaz formulario (17:10PM)
+-Primer paso:
+Instalación y configuración de mi XAMPP
+1. Activo el apache y MySQL (5:17)
+2. Me dirijo a mi Localhost de mi phpmyadmin (5:19)
+Creación de la Base de Datos correspondiente al MER realizado por mi compañero Agustin Collipal (17:19-18:30)
+CREATE DATABASE sistema_salud;
+
+USE sistema_salud;
+
+-- Tabla de usuario
+CREATE TABLE usuario (
+    rut CHAR(10) PRIMARY KEY,
+    nombre CHAR(20),
+    apellido CHAR(20),
+    password CHAR(20),
+    correo CHAR(30),
+    fecha_nacimiento DATE,
+    ubicacion CHAR(30),
+    estado_salud CHAR(30)
+);
+
+-- Tabla de administrador_de_web
+CREATE TABLE administrador_de_web (
+    id_administrador CHAR(20) PRIMARY KEY,
+    admin_nombre CHAR(20),
+    admin_apellido CHAR(20),
+    admin_password CHAR(20),
+    correo CHAR(30),
+    id_municipalidad INT,
+    rut CHAR(10),
+    FOREIGN KEY (rut) REFERENCES usuario(rut)
+);
+
+-- Tabla de centro_salud
+CREATE TABLE centro_salud (
+    id_centro_salud INT PRIMARY KEY,
+    nombre CHAR(20),
+    direccion CHAR(40),
+    capacidad INT,
+    recursos INT
+);
+
+-- Tabla de funcionario
+CREATE TABLE funcionario (
+    id_funcionario CHAR(10) PRIMARY KEY,
+    nombre CHAR(20),
+    apellido CHAR(20),
+    trabajo CHAR(30),
+    id_centro_salud INT,
+    FOREIGN KEY (id_centro_salud) REFERENCES centro_salud(id_centro_salud)
+);
+
+-- Tabla de consulta
+CREATE TABLE consulta (
+    id_consulta INT PRIMARY KEY,
+    fecha_consulta DATE,
+    rut CHAR(10),
+    id_centro_salud INT,
+    FOREIGN KEY (rut) REFERENCES usuario(rut),
+    FOREIGN KEY (id_centro_salud) REFERENCES centro_salud(id_centro_salud)
+);
+
+-- Tabla de situacion_salud
+CREATE TABLE situacion_salud (
+    id_situacion INT PRIMARY KEY,
+    gravedad INT,
+    descripcion CHAR(300),
+    rut CHAR(10),
+    FOREIGN KEY (rut) REFERENCES usuario(rut)
+);
+
+-- Tabla de recomendacion
+CREATE TABLE recomendacion (
+    id_recomendacion INT PRIMARY KEY,
+    razon CHAR(500),
+    id_centro_salud INT,
+    id_situacion INT,
+    FOREIGN KEY (id_centro_salud) REFERENCES centro_salud(id_centro_salud),
+    FOREIGN KEY (id_situacion) REFERENCES situacion_salud(id_situacion)
+
+Archivos PHP y comprobación del Desarrollo de la estructura HTML e interfaz formulario(18:34-19:23)
+-Dirigirse al directorio de Xampp
+-ingresar a la carpeta htdocs
+-crear database.php
+-registro.php
+-registro_proceso.php
+
+database.php:
+<?php
+$host = 'localhost'; // Servidor local (XAMPP)
+$db = 'UrgenciaSmart'; // Nombre de la base de datos
+$user = 'root'; // Usuario por defecto en XAMPP
+$pass = ''; // Contraseña vacía por defecto en XAMPP
+
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Conexión exitosa";
+} catch (PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
+}
+?>
+
+registro.php:
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <h1>Registro de Usuario</h1>
+    <form action="registro_proceso.php" method="POST">
+        <input type="text" name="rut" placeholder="RUT" required><br>
+        <input type="text" name="nombre" placeholder="Nombre" required><br>
+        <input type="text" name="apellido" placeholder="Apellido" required><br>
+        <input type="password" name="password" placeholder="Contraseña" required><br>
+        <input type="email" name="correo" placeholder="Correo" required><br>
+        <input type="date" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" required><br>
+        <input type="text" name="ubicacion" placeholder="Ubicación" required><br>
+        <input type="text" name="estado_salud" placeholder="Estado de Salud" required><br>
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>
+
+registro_proceso.php:
+<?php
+include('database.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $rut = $_POST['rut'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $password = $_POST['password'];
+    $correo = $_POST['correo'];
+    $fecha_nacimiento = $_POST['fecha_nacimiento'];
+    $ubicacion = $_POST['ubicacion'];
+    $estado_salud = $_POST['estado_salud'];
+
+    // Insertar datos en la tabla de usuario
+    $sql = "INSERT INTO usuario (rut, nombre, apellido, password, correo, fecha_nacimiento, ubicacion, estado_salud)
+            VALUES (:rut, :nombre, :apellido, :password, :correo, :fecha_nacimiento, :ubicacion, :estado_salud)";
+    $stmt = $conn->prepare($sql);
+
+    $stmt->execute([
+        'rut' => $rut,
+        'nombre' => $nombre,
+        'apellido' => $apellido,
+        'password' => $password,
+        'correo' => $correo,
+        'fecha_nacimiento' => $fecha_nacimiento,
+        'ubicacion' => $ubicacion,
+        'estado_salud' => $estado_salud
+    ]);
+
+    echo " Usuario registrado con éxito";
+}
+?>
+
+Incluir las tablas restantes del MER (recomendacion y situacion_salud) (18:34-20:13)
+
+CREATE TABLE IF NOT EXISTS situacion_salud (
+    id_situacion INT PRIMARY KEY AUTO_INCREMENT,
+    gravedad INT,
+    descripcion CHAR(300),
+    rut CHAR(10),
+    FOREIGN KEY (rut) REFERENCES usuario(rut)
+);
+
+CREATE TABLE IF NOT EXISTS recomendacion (
+    id_recomendacion INT PRIMARY KEY AUTO_INCREMENT,
+    razon CHAR(500),
+    id_centro_salud INT,
+    id_situacion INT,
+    FOREIGN KEY (id_centro_salud) REFERENCES centro_salud(id_centro_salud),
+    FOREIGN KEY (id_situacion) REFERENCES situacion_salud(id_situacion)
+);
+
+Link:
+
+http://localhost/sistema_salud/registro.php
+
+
+
