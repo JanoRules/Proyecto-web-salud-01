@@ -1,0 +1,91 @@
+Aprender manejo de Base de datos SQL para la página web
+
+----------Lo que aprendi---------
+
+-Usar phpMyadmin y XAMPP: http://localhost/phpmyadmin
+
+-Crear Tabla
+
+CREATE TABLE usuarios (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    edad INT(3),
+    email VARCHAR(100)
+);
+
+-Insertar Datos
+
+INSERT INTO usuarios (nombre, edad, email) VALUES ('Fulanito', 18, 'fulanito@papu.com');
+
+-Leer y gestionar datos:
+En phpMyadmin para ver los datos seleccionas la tabla y clickeas en "examinar"
+
+-Actualizar:
+
+UPDATE usuarios SET edad = 20 WHERE nombre = "Fulanito";
+
+-Eliminar:
+DELETE FROM usuarios WHERE nombre = "Fulanito";
+
+-Conectar MySql con mi página web
+
+Se crea un archivo "conexion_de_base_de_datos.php" para conectarlo con la pagina web:
+
+<?php
+$servername = "localhost";
+$username = "tu_usuario";
+$password = "tu_contraseña";
+$dbname = "UrgenciaSmart";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+?>
+
+Realizar consultas desde PHP (ejemplo de un formulario web):
+
+<?php
+include 'db_connection.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'];
+    $edad = $_POST['edad'];
+    $email = $_POST['email'];
+
+    $sql = "INSERT INTO usuarios (nombre, edad, email) VALUES ('$nombre', '$edad', '$email')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Nuevo usuario creado con éxito";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
+?>
+
+Formulario html para insertar datos y enviarlos a la base de datos:
+
+<form action="tu_archivo_php.php" method="post">
+    Nombre: <input type="text" name="nombre"><br>
+    Edad: <input type="number" name="edad"><br>
+    Email: <input type="email" name="email"><br>
+    <input type="submit" value="Insertar">
+</form>
+
+Prevenir un ataque (en este caso, una inyeccion sql):
+
+$stmt = $conn->prepare("INSERT INTO usuarios (nombre, edad, email) VALUES (?, ?, ?)");
+$stmt->bind_param("sis", $nombre, $edad, $email);
+$stmt->execute();
+$stmt->close();
+
+
+
+Fin de lo aprendido
+
+	
