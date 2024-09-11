@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <h2>Formulario de Registro de Usuario</h2>
+    <form action="registrar_usuario.php" method="POST">
+        RUT: <input type="text" name="rut" required><br>
+        Nombre: <input type="text" name="nombre" required><br>
+        Apellido: <input type="text" name="apellido" required><br>
+        Contraseña: <input type="password" name="password" required><br>
+        Correo: <input type="email" name="correo" required><br>
+        Fecha de Nacimiento: <input type="date" name="fecha_nacimiento" required><br>
+        Ubicación: <input type="text" name="ubicacion" required><br>
+        Estado de Salud: <input type="text" name="estado_salud" required><br>
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
