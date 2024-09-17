@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web salud</title>
+    <link rel="stylesheet" href="interfaz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="descarga.jpg" alt="Hospital Logo" class="logo">
+            <h2>Biebenido a Hospital Locator (nombre prototipo)</h2>
+            <p>Encuentra los hospitales más cercanos de forma rápida y sencilla.</p>
+        </div>
+        <form action="login.php" method="post">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="input-group remember-me">
+                <label>
+                    <input type="checkbox" name="remember"> Remember Me
+                </label>
+            </div>
+            <div class="input-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="help-links">
+            <a href="#">Forgot Password?</a>
+            <a href="#">Create an Account</a>
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>
