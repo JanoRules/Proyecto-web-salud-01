@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0b34;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0b34;
+    padding: 1rem 2rem; /* Usé rem en lugar de px */
+    border-bottom: 1px solid #444;
+    flex-wrap: wrap; /* Para adaptarse en pantallas pequeñas */
+}
+
+.navbar-logo img {
+    height: 5vh; /* Cambié a un valor basado en el alto del viewport */
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Usé rem en lugar de px */
+    flex-grow: 1; /* Permite que el menú se ajuste en tamaño */
+    justify-content: center; /* Centrar el menú */
+}
+
+.navbar-menu li {
+    padding: 0.5rem 1rem;
+    border: 1px solid #9ca3c3;
+    border-radius: 5px;
+    max-width: 100%; /* Para evitar desbordamiento */
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-login a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #0d2db9;
+    padding: 0.5rem 1rem; /* Usé rem en lugar de px */
+    border-radius: 5px;
+}
+
+.navbar-login a:hover,
+.navbar-menu li a:hover {
+    background-color: #4f4f90;
+    transition: background-color 0.3s ease;
+}
+
+/* Espaciado entre elementos */
+.mapa {
+    margin-top: 2rem; /* Ajusté a rem */
+    margin-bottom: 4rem;
+}
+
+h2 {
+    width: 50%; /* Ajusté a porcentaje para mayor flexibilidad */
+    height: auto; /* Ajusté la altura */
+    color: blue;
+    margin: 0 auto; /* Centramos el texto */
+    text-align: center;
+}
+
+h3 {
+    width: 80%; /* Ajusté a porcentaje */
+    height: auto;
+    margin: 0 auto; /* Centramos el texto */
+    text-align: center;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar-menu {
+        flex-direction: column; /* El menú se apila verticalmente */
+        gap: 1rem;
+    }
+
+    h2, h3 {
+        width: 90%; /* Aumenta el ancho en pantallas pequeñas */
+    }
+
+    .navbar-login a {
+        padding: 0.5rem 0.8rem; /* Ajustamos el padding */
+    }
+}
