@@ -1,3 +1,4 @@
+
 .mapa{
     margin-top: 25px;
     margin-bottom: 100px;
@@ -9,7 +10,7 @@ h2{
     height: 50px;
     color: blue;
     position: relative;
-    left: 820px;
+    left: 620px;
     text-align: center;
 }
 
@@ -18,6 +19,42 @@ h3{
     width: 800px;
     height: 50px;
     position: relative;
-    left: 600px;
+    left: 350px;
     text-align: center;
 }
+.login-button {
+    position: fixed;
+    top: 10px;  /* Ajusta esta distancia según necesites */
+    right: 10px; /* Ajusta esta distancia según necesites */
+}
+
+.login-button button {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.login-button button:hover {
+    background-color: darkblue;
+}
+.auth-buttons {
+    position: fixed;
+    top: 10px;
+    right: 150px;
+}
+
+.auth-buttons button {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px; /* Espacio entre los botones */
+}
+
+.auth-buttons button:hover {
+    background-color: darkblue;
+}
+
