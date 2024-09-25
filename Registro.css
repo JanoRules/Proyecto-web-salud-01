@@ -1,0 +1,109 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0c0b34 !important; /* Fondo azul oscuro */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+/* Posicionar el enlace en la parte superior izquierda */
+.volver-link {
+    position: absolute;
+    top: 10px; /* Ajusta según el espacio que quieras */
+    left: 10px; /* Ajusta según el espacio que quieras */
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Cambiar el color al hacer hover sobre el enlace */
+.volver-link:hover {
+    color: #0056b3;
+}
+
+/* Centrar el contenedor principal */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegurar que ocupa toda la altura de la ventana */
+}
+
+/* Estilos para el contenedor del formulario */
+.container {
+    background-color: #0c0b34; /* Cambiar a azul oscuro, igual que el fondo */
+    padding: 40px; /* Ajustar el padding para que sea más espacioso */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Ampliar el ancho del formulario */
+    width: 100%; /* Asegurar que ocupa todo el ancho disponible */
+    text-align: center; /* Alineación centrada del contenido */
+}
+
+/* Estilo para el título del formulario */
+h1 {
+    color: #ffffff; /* Color blanco para el título */
+    margin-bottom: 15px; /* Espaciado inferior para separar del formulario */
+    font-size: 24px; /* Tamaño de fuente del título */
+}
+
+/* Estilos para las etiquetas */
+.form-label {
+    font-weight: bold;
+    color: #ffffff; /* Cambiar a blanco para mejor visibilidad */
+    margin-bottom: 5px; /* Reducir el espacio entre etiqueta e input */
+}
+
+/* Estilos para los inputs */
+.form-control {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 10px; /* Aumentar el padding interno para mayor comodidad */
+    margin-bottom: 10px; /* Reducir el margen inferior */
+    font-size: 14px; /* Tamaño de fuente */
+    transition: border-color 0.3s;
+}
+
+/* Cambio de borde cuando el input está enfocado */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilos para los botones */
+.btn {
+    border-radius: 6px;
+    padding: 8px 16px; /* Aumentar padding para botones */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Cambio de color en hover de los botones */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Estilo para el botón de cancelar */
+.btn-primary[role="button"] {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-primary[role="button"]:hover {
+    background-color: #5a6268;
+    border-color: #4e555b;
+}
+
+/* Estilos para los textos específicos */
+.registrar, .mostrar-password, .recordar-datos {
+    color: #ffffff; /* Color blanco */
+}
