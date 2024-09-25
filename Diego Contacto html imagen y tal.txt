@@ -1,0 +1,54 @@
+7:25
+Implementaciones del contacto.html
+-En el footer, el encabezado (h4) el contacto actua como link, lo que dirigira al contacto.html
+   <footer>
+        <p>&copy; 2024 Web Salud</p>
+    </footer>
+
+    <section id="contacto">
+        <a href="contacto.html">
+            <h4>Contacto</h4>
+        </a>
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+</body>
+</html>
+
+-Fix de acciones no funcionales
+-Fix de que las palabras se encuentran invisibles
+-Implementacion de que la Imagen de Ministerio Salud, te diriga a web salud.html
+-Eliminacion de Palabras inadecuadas en Contacto.html
+-Optimizacion del codigo
+-Agregacion de imagen a Ministerio de salud y que la palabra "Ministerio Salud" este visible y sea interactuable
+-La imagen del Ministerio de Salud, te redirige a websalud.html
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="websalud.html">
+                <p><img src="minsal.png" alt="Ministerio de Salud" height="40" >Ministerio de Salud</p>
+            </a>
+-Se realizo un css exclusivo para contacto.css :
+.navbar-nav .nav-link {
+    color: black; 
+}
+
+form#contactForm {
+    background-color: #f5f5f5; 
+    padding: 20px;
+    border-radius: 10px;
+}
+.navbar-brand {
+    color: black !important; 
+}
+
+form#contactForm input,
+form#contactForm textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

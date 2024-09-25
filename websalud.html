@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['username'])) {
+    // Si no hay una sesión activa, redirigir a la página de inicio de sesión
+    header("Location: login.html");
+    exit();
+}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,8 +25,19 @@
     <body>
         <h5>
             <ul>
-                <li><a href="login2.html"class="btn btn-primary" role="button">Iniciar sesión</a></li>
-                <li><a href="websalud"></a>Mapa</li>
+                <div class="login-button">
+    		<button onclick="location.href='login2.html'">Iniciar sesión</button>
+		</div>
+		<div class="auth-buttons">
+    		<button onclick="location.href='registrar.html'">Registrarse</button>
+		</div>
+		
+		<!-- Nuevo botón de Cerrar sesión -->
+                <div class="logout-button">
+                    <button onclick="location.href='logout.php'">Cerrar sesión</button>
+                </div>
+
+		<li><a href="websalud"></a>Mapa</li>
             </ul></h5>
     </body>
 
@@ -29,6 +50,7 @@
     </section>
 
     
+
     
 
     
@@ -41,7 +63,9 @@
     </footer>
 
     <section id="contacto">
-        <h4>Contacto</h4>
+        <a href="contacto.html">
+            <h4>Contacto</h4>
+        </a>
         <form>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email">

@@ -1,0 +1,24 @@
+/* Cambia los colores de los enlaces específicamente para contacto.html */
+.navbar-nav .nav-link {
+    color: black; /* Cambia a un color visible */
+}
+
+/* Estilos personalizados para el formulario de contacto */
+form#contactForm {
+    background-color: #f5f5f5; /* Fondo claro para el formulario */
+    padding: 20px;
+    border-radius: 10px;
+}
+.navbar-brand {
+    color: black !important; /* Fuerza el color negro, si otros estilos están sobreescribiendo */
+}
+
+
+form#contactForm input,
+form#contactForm textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
