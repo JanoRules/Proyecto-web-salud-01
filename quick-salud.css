@@ -1,3 +1,46 @@
+/* Estilos generales para los botones */
+.boton {
+    font-size: 1rem; /* Tamaño de texto más pequeño */
+    padding: 8px 16px; /* Espaciado reducido */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Animación suave para cambios de color */
+}
+
+/* Efecto hover para los botones */
+.boton:hover {
+    opacity: 0.9; /* Ligera opacidad al pasar el ratón */
+}
+
+/* Estilos personalizados para cada botón */
+.btn-rojo {
+    background-color: red;
+}
+
+.btn-rojo:hover {
+    background-color: darkred; /* Cambia a un rojo más oscuro al hacer hover */
+}
+
+.btn-amarillo {
+    background-color: yellow;
+    color: black; /* Texto negro para mejor visibilidad */
+}
+
+.btn-amarillo:hover {
+    background-color: gold; /* Cambia a un amarillo dorado al hacer hover */
+}
+
+.btn-verde {
+    background-color: green;
+}
+
+.btn-verde:hover {
+    background-color: darkgreen; /* Cambia a un verde más oscuro al hacer hover */
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -96,3 +139,4 @@ h3 {
         padding: 0.5rem 0.8rem; /* Ajustamos el padding */
     }
 }
+
