@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Salud - Reseña</title>
+    <link rel="stylesheet" href="Reseña.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMKtgjpSDEh3zIFkk8rH8sMktXKf5g1/RChW2M" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="logo100.png" alt="Ministerio de Salud" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="quick-salud.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Últimas Novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Reseña.html">Reseña</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contáctanos</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a class="btn btn-outline-light" href="login2.html">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <h2 class="text-center">Agregar una Reseña</h2>
+        <form id="review-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre:</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="product" class="form-label">Producto:</label>
+                <input type="text" class="form-control" id="product" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">Calificación:</label>
+                <div class="rating">
+                    <input type="radio" id="star1" name="rating" value="1" required>
+                    <label for="star1">⭐</label>
+                    <input type="radio" id="star2" name="rating" value="2" required>
+                    <label for="star2">⭐</label>
+                    <input type="radio" id="star3" name="rating" value="3" required>
+                    <label for="star3">⭐</label>
+                    <input type="radio" id="star4" name="rating" value="4" required>
+                    <label for="star4">⭐</label>
+                    <input type="radio" id="star5" name="rating" value="5" required>
+                    <label for="star5">⭐</label>
+                </div>
+                <small class="form-text text-muted">Selecciona una calificación de 1 a 5.</small>
+                <div id="selected-rating" class="text-center mt-2"></div> <!-- Div para mostrar la calificación seleccionada -->
+            </div>
+
+            <div class="mb-3">
+                <label for="review" class="form-label">Reseña:</label>
+                <textarea class="form-control" id="review" required rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar Reseña</button>
+        </form>
+    </div>
+
+    <section id="reviews-list" class="mt-5">
+        <h2>Reseñas de Usuarios</h2>
+        <div id="reviews-container">
+            <!-- Aquí se agregarán las reseñas -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Seleccionamos los elementos necesarios
+        const ratingInputs = document.querySelectorAll('input[name="rating"]');
+        const selectedRatingDisplay = document.getElementById('selected-rating');
+
+        // Agregamos un evento 'change' a cada input de calificación
+        ratingInputs.forEach(input => {
+            input.addEventListener('change', () => {
+                selectedRatingDisplay.textContent = `Calificación seleccionada: ${input.value} estrellas`;
+            });
+        });
+
+        // Manejo del formulario
+        document.getElementById('review-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
+            const name = document.getElementById('name').value;
+            const product = document.getElementById('product').value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const review = document.getElementById('review').value;
+
+            // Crear un nuevo elemento de reseña
+            const reviewElement = document.createElement('div');
+            reviewElement.innerHTML = `
+                <h4>${name} (Producto: ${product})</h4>
+                <p>Calificación: ${rating} estrellas</p>
+                <p>${review}</p>
+            `;
+
+            // Añadir la reseña al contenedor de reseñas
+            document.getElementById('reviews-container').appendChild(reviewElement);
+
+            // Limpiar el formulario después de enviar
+            this.reset();
+            selectedRatingDisplay.textContent = ''; // Limpiar la calificación seleccionada
+        });
+    </script>
+</body>
+</html>
+
