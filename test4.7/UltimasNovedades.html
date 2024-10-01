@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Últimas Novedades</title>
+    <link rel="stylesheet" href="admin.css">
+    <!-- Bootstrap CDN para la funcionalidad -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Logo del ministerio -->
+            <a class="navbar-brand" href="#">
+                <img src="logo100.png" alt="Ministerio de Salud" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="websalud.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ultimas Novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reseña</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactos</a>
+                    </li>
+                </ul>
+                <!-- Botón de Iniciar Sesión -->
+                <div class="d-flex">
+                    <a class="btn btn-outline-light" href="login2.html">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container mt-5 pt-5">
+        <h1 class="text-center mt-5">Últimas Novedades en Centros de Salud</h1>
+
+        <!-- Imágenes y texto -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <img src="centro_salud_1.jpg" class="img-fluid" alt="Centro de Salud 1">
+                <p class="mt-2">Reciente actualización en el Centro de Salud Central. Ahora contamos con nuevos equipos para atención especializada.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="centro_salud_2.jpg" class="img-fluid" alt="Centro de Salud 2">
+                <p class="mt-2">Inauguración de un nuevo Centro de Salud en la región metropolitana, facilitando el acceso a servicios médicos de calidad.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
