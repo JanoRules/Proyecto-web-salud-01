@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restablecer Contraseña</title>
+    <link rel="stylesheet" href="register.css"> <!-- O usa el archivo CSS que prefieras -->
+</head>
+<body>
+    <div class="container">
+        <h2>Restablecer Contraseña</h2>
+        <p>Por favor, ingresa una nueva contraseña para tu cuenta.</p>
+
+        <form action="actualizar_contraseña.php" method="post">
+            <!-- Incluye el token de recuperación en un campo oculto -->
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($_GET['token']); ?>">
+
+            <div class="form-group">
+                <label for="new_password">Nueva Contraseña:</label>
+                <input type="password" name="new_password" id="new_password" required placeholder="Ingresa tu nueva contraseña">
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirmar Contraseña:</label>
+                <input type="password" name="confirm_password" id="confirm_password" required placeholder="Confirma tu nueva contraseña">
+            </div>
+
+            <button type="submit" class="btn">Restablecer Contraseña</button>
+        </form>
+    </div>
+</body>
+</html>
