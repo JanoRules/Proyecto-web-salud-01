@@ -1,0 +1,132 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0b34; /* Fondo oscuro */
+    color: white;
+}
+
+h1, h2, h3 {
+    color: #4f4f90; /* Tono azul suave para encabezados */
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0b34;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #444;
+    flex-wrap: wrap;
+}
+
+.navbar-logo img {
+    height: 40px;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.navbar-menu li {
+    padding: 0.5rem 1rem;
+    border: 1px solid #9ca3c3;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-login a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #0d2db9;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.navbar-login a:hover,
+.navbar-menu li a:hover {
+    background-color: #4f4f90;
+    transition: background-color 0.3s ease;
+}
+
+/* Formulario de actualización de usuario */
+.form-container {
+    background-color: #1a1a3d;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #9ca3c3;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #9ca3c3;
+    background-color: #2c2f57;
+    color: white;
+}
+
+.form-container input[type="submit"],
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container input[type="submit"]:hover,
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para mensajes de éxito */
+.success-message {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
