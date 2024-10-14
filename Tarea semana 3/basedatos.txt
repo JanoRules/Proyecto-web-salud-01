@@ -1,0 +1,5 @@
+añadi lo siguiente en la base de datos
+ALTER TABLE centros_salud
+ADD COLUMN servicios TEXT,  -- Servicios que ofrece el centro
+ADD COLUMN reseñas TEXT,     -- Reseñas de los usuarios
+ADD COLUMN rating FLOAT;     -- Valoración promedio del centro
