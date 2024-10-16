@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css"> <!-- Añadir estilos si es necesario -->
+    <title>Servicios Más Buscados</title>
+</head>
+<body>
+    <h1>Servicios Más Buscados</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Servicio</th>
+                <th>Cantidad de Búsquedas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            include 'conexion.php'; // Incluir el archivo de conexión
+
+            // Consulta para obtener los servicios más buscados
+            $sql = "SELECT s.nombre, COUNT(bs.servicio_id) AS cantidad_busquedas 
+                    FROM busquedas_servicios bs 
+                    JOIN servicios s ON bs.servicio_id = s.id 
+                    GROUP BY bs.servicio_id 
+                    ORDER BY cantidad_busquedas DESC 
+                    LIMIT 10"; // Obtiene los 10 servicios más buscados
+
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Mostrar los resultados en la tabla
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>{$row['nombre']}</td>
+                            <td>{$row['cantidad_busquedas']}</td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='2'>No se encontraron servicios buscados.</td></tr>";
+            }
+
+            $conn->close();
+            ?>
+        </tbody>
+    </table>
+</body>
+</html>
