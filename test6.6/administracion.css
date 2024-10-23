@@ -1,0 +1,52 @@
+/* Estilos generales */
+body {
+    background-color: #0c0b34; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-family: Arial, sans-serif;
+    margin: 10;
+    padding: 0;
+    text-align: center; /* Centrar contenido */
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos para encabezados */
+h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Estilo para la imagen del logo */
+.logo {
+    margin-bottom: 20px;
+}
+
+/* Estilos para los enlaces tipo botón */
+a.btn {
+    display: inline-block;
+    background-color: #007bff; /* Color azul para botones */
+    color: white;
+    padding: 10px 30px;
+    margin: 10px;
+    border-radius: 8px;
+    text-decoration: none; /* Quitar subrayado en enlaces */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a.btn-primary:hover {
+    background-color: #0056b3; /* Color más oscuro en hover */
+}
+
+/* Espaciado superior al logo */
+.logo {
+    margin-bottom: 20px;
+    margin-top: 1vh; /* Margen superior para ajustarse a la altura de la ventana */
+}
+
