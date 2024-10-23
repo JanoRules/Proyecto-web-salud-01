@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas de Centros de Salud</title>
+    <link rel="stylesheet" href="Reseña2.css"> <!-- Asegúrate de tener tu CSS -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Logo del ministerio -->
+            <a class="navbar-brand" href="#">
+                <img src="logo100.png" alt="Ministerio de Salud" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="quick-salud.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ultimas-novedades.html">Ultimas Novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Reseña.html">Reseña</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contactanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.html">Preguntas Frecuentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AgendarHora.html">Agenda tu hora</a>
+                    </li>
+                </ul>
+                <!-- Botón de Iniciar Sesión -->
+                <div class="d-flex">
+                    <a class="btn btn-outline-light" href="login2.html">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="favoritos" class="mt-5">
+        <h3>Centros de Salud Favoritos</h3>
+        <ul id="lista-favoritos"></ul>
+    </div>
+
+    <div id="reseña-section" class="mt-5">
+        <h3>Deja tu Reseña</h3>
+        <form id="form-reseña">
+            <textarea id="reseña-text" required placeholder="Escribe tu reseña aquí..."></textarea>
+            <button type="submit">Enviar Reseña</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script>
+// script.js
+
+let usuarioAutenticado = false; // Cambia esto a true si el usuario está autenticado
+
+function initMap() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+            const userLocation = { lat: position.coords.latitude, lng: position.coords.longitude };
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: userLocation
+            });
+            new google.maps.Marker({
+                position: userLocation,
+                map: map,
+                title: "Tu ubicación"
+            });
+            cargarCentrosSalud(userLocation, map);
+        }, () => {
+            alert('Error al obtener tu ubicación.');
+        });
+    } else {
+        alert('La geolocalización no está soportada por este navegador.');
+    }
+}
+
+function cargarCentrosSalud(location, map) {
+    fetch(`obtener_centros_salud.php?lat=${location.lat}&lng=${location.lng}`)
+    .then(response => response.json())
+    .then(data => {
+        data.centros.forEach(centro => {
+            const marker = new google.maps.Marker({
+                position: { lat: centro.lat, lng: centro.lng },
+                map: map,
+                title: centro.nombre
+            });
+
+            marker.addListener('click', () => {
+                marcarComoFavorito(centro.id, centro.nombre);
+            });
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function marcarComoFavorito(centroId, nombre) {
+    if (!usuarioAutenticado) {
+        alert('Debes iniciar sesión para agregar a favoritos.');
+        return;
+    }
+
+    fetch(`marcar_favorito.php?centro_id=${centroId}`, { method: 'POST' })
+    .then(response => {
+        if (response.ok) {
+            alert(`Centro ${nombre} agregado a favoritos.`);
+            obtenerFavoritos(); // Actualiza la lista de favoritos
+        } else {
+            alert(`No se pudo agregar ${nombre} a favoritos.`);
+        }
+    })
+    .catch(error => console.error('Error al marcar como favorito:', error));
+}
+
+function obtenerFavoritos() {
+    fetch('obtener_favoritos.php')
+    .then(response => response.json())
+    .then(data => {
+        const listaFavoritos = document.getElementById('lista-favoritos');
+        listaFavoritos.innerHTML = '';
+
+        if (data.favoritos.length === 0) {
+            listaFavoritos.innerHTML = '<li>No tienes favoritos.</li>';
+        } else {
+            data.favoritos.forEach(favorito => {
+                const li = document.createElement('li');
+                li.textContent = favorito.nombre;
+                listaFavoritos.appendChild(li);
+            });
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function enviarResena(event) {
+    event.preventDefault(); // Evita que el formulario se envíe normalmente
+
+    const reseñaText = document.getElementById('reseña-text').value;
+
+    if (!usuarioAutenticado) {
+        alert('Debes iniciar sesión para dejar una reseña.');
+        return;
+    }
+
+    fetch('guardar_reseña2.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            reseña: reseñaText
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Reseña enviada correctamente.');
+            document.getElementById('reseña-text').value = ''; // Limpiar el campo
+        } else {
+            alert('Error al enviar la reseña.');
+        }
+    })
+    .catch(error => console.error('Error al enviar la reseña:', error));
+}
+
+document.getElementById('form-reseña').addEventListener('submit', enviarResena);
+
+// Llama a la función obtenerFavoritos al cargar la página
+window.onload = () => {
+    obtenerFavoritos();
+    // Aquí deberías verificar si el usuario está autenticado y cambiar usuarioAutenticado a true si es así
+};
+
+    </script>
+</body>
+</html>
