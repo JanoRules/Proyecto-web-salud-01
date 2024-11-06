@@ -1,0 +1,157 @@
+/* Centrar el botón en su contenedor */
+.btn-iniciar-sesion-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilo del botón de "Iniciar Sesión" */
+.btn-iniciar-sesion {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px; /* Aumenta el tamaño del botón */
+    border: none;
+    border-radius: 8px; /* Curvatura más grande */
+    font-size: 1.2rem; /* Fuente más grande */
+    cursor: pointer;
+    text-align: center;
+    max-width: 100%;
+    width: 100%; /* Ajusta el ancho al 100% de su contenedor */
+    max-width: 400px; /* Máximo ancho para evitar que sea demasiado grande */
+}
+
+.btn-iniciar-sesion:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0b34;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0b34;
+    padding: 1rem 2rem; /* Usé rem en lugar de px */
+    border-bottom: 1px solid #444;
+    flex-wrap: wrap; /* Para adaptarse en pantallas pequeñas */
+}
+
+.navbar-logo img {
+    height: 5vh; /* Cambié a un valor basado en el alto del viewport */
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Usé rem en lugar de px */
+    flex-grow: 1; /* Permite que el menú se ajuste en tamaño */
+    justify-content: center; /* Centrar el menú */
+}
+
+.navbar-menu li {
+    padding: 0.5rem 1rem;
+    border: 1px solid #9ca3c3;
+    border-radius: 5px;
+    max-width: 100%; /* Para evitar desbordamiento */
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-login a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #0d2db9;
+    padding: 0.5rem 1rem; /* Usé rem en lugar de px */
+    border-radius: 5px;
+}
+
+.navbar-login a:hover,
+.navbar-menu li a:hover {
+    background-color: #4f4f90;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para los botones */
+.btn {
+    border-radius: 6px;
+    padding: 8px 16px; /* Reducir padding para botones */
+    font-size: 14px; /* Reducir tamaño de fuente */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Cambio de color en hover de los botones */
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Estilo para el botón de cancelar */
+.btn-primary[role="button"] {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-primary[role="button"]:hover {
+    background-color: #5a6268;
+    border-color: #4e555b;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .navbar {
+    background-color: #1c1c1c;
+}
+
+body.dark-mode .navbar-menu li {
+    border-color: #4f4f90;
+}
+
+body.dark-mode .navbar-menu li a {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar-login a {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+body.dark-mode .navbar-login a:hover,
+body.dark-mode .navbar-menu li a:hover {
+    background-color: #4f4f90;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    color: #ffffff;
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #45a049;
+    border-color: #419241;
+}
