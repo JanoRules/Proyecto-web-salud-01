@@ -1,0 +1,176 @@
+/* Estilos generales */
+body {
+    background-color: blue; 
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0b34;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0b34;
+    padding: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.navbar-logo img {
+    height: 60px;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-menu li {
+    padding: 10px 20px;
+    border: 1px solid #9ca3c3;
+    border-radius: 5px;
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-login a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #0d2db9;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.navbar-login a:hover,
+.navbar-menu li a:hover {
+    background-color: #4f4f90;
+    transition: background-color 0.3s ease;
+}
+
+.volver-link {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.volver-link:hover {
+    color: #0056b3;
+}
+
+.container {
+    max-width: 350px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.blanco input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+a p {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+a p:hover {
+    text-decoration: underline;
+}
+
+.pt-5 {
+    padding-top: 50px;
+}
+
+h6 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* Fondo oscuro */
+body.dark-mode {
+    background-color: #121212; /* Fondo en modo oscuro */
+    color: #ffffff;
+}
+
+/* Modo oscuro */
+.dark-mode .container {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.dark-mode .btn-success {
+    background-color: #4caf50;
+    border-color: #4caf50;
+    color: #ffffff;
+}
+
+.dark-mode .btn-outline-light {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.dark-mode .navbar {
+    background-color: #1c1c1c;
+}
+
+.dark-mode .navbar-menu li a,
+.dark-mode .navbar-login a {
+    color: #cccccc !important;
+}
+
+.dark-mode #caja_error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
