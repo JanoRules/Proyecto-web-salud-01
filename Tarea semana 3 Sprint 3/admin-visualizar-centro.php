@@ -58,9 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateCenter'])) {
 }
 
 
-
-
-
 // Manejar la eliminación de un centro de salud
 if (isset($_GET['delete'])) {
     $centerId = $_GET['delete'];
