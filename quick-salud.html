@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Salud</title>
+    <link rel="stylesheet" href="quick-salud.css">
+    
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="comparacion.js"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR1QaFAuNROMnt5aOF9WvnmVCXO5OSmBI&callback=initMap" async defer></script>
+
+    <style>
+        #map {
+            width: 100%;
+            height: 450px;
+        }
+        .geo-btn {
+            margin: 20px auto;
+            display: block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .geo-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            const ubicacion = { lat: -38.729, lng: -72.6439 };
+    
+            // Estilo personalizado para eliminar puntos de interés
+            const mapStyles = [
+                {
+                    featureType: "poi", // 'poi' se refiere a puntos de interés (Points of Interest)
+                    stylers: [{ visibility: "off" }] // Oculta todos los puntos de interés
+                },
+                {
+                    featureType: "transit", // Oculta paradas de transporte público
+                    stylers: [{ visibility: "off" }]
+                },
+                {
+                    featureType: "road", // Mantener las carreteras visibles
+                    stylers: [{ visibility: "on" }]
+                }
+            ];
+    
+            // Inicializar el mapa con estilo personalizado
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: ubicacion,
+                styles: mapStyles // Aplica el estilo personalizado
+            });
+    
+            // Añadir un marcador
+            marker = new google.maps.Marker({
+                position: ubicacion,
+                map: map,
+                title: "Ubicación de Servicios de Salud"
+            });
+        }
+
+        // Función para centrar el mapa en la ubicación actual del usuario
+        function centrarEnUbicacion() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+
+                        // Centrar el mapa en la ubicación actual
+                        map.setCenter(pos);
+
+                        // Colocar o mover el marcador en la nueva ubicación
+                        if (marker) {
+                            marker.setPosition(pos);
+                        } else {
+                            marker = new google.maps.Marker({
+                                position: pos,
+                                map: map,
+                                title: "Estás aquí",
+                            });
+                        }
+                    },
+                    () => {
+                        alert("No se pudo obtener la ubicación.");
+                    }
+                );
+            } else {
+                alert("Tu navegador no soporta la geolocalización.");
+            }
+        }
+    </script>
+    <script>
+        let circle;
+    
+        function initMap() {
+            const ubicacion = { lat: -38.729, lng: -72.6439 };
+    
+            const mapStyles = [
+                {
+                    featureType: "poi",
+                    stylers: [{ visibility: "off" }]
+                },
+                {
+                    featureType: "transit",
+                    stylers: [{ visibility: "off" }]
+                },
+                {
+                    featureType: "road",
+                    stylers: [{ visibility: "on" }]
+                }
+            ];
+    
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: ubicacion,
+                styles: mapStyles
+            });
+    
+            marker = new google.maps.Marker({
+                position: ubicacion,
+                map: map,
+                title: "Ubicación de Servicios de Salud"
+            });
+    
+            circle = new google.maps.Circle({
+                map: map,
+                radius: 2000, 
+                fillColor: '#00FF00', 
+                strokeColor: '#0000FF', 
+                strokeOpacity: 0.8,
+                fillOpacity: 0.35,
+                center: ubicacion
+            });
+        }
+    
+        function centrarEnUbicacion() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+    
+                        map.setCenter(pos);
+    
+                        marker.setPosition(pos);
+    
+                        circle.setCenter(pos);
+                    },
+                    () => {
+                        alert("No se pudo obtener la ubicación.");
+                    }
+                );
+            } else {
+                alert("Tu navegador no soporta la geolocalización.");
+            }
+        }
+    
+        function cambiarColorAtencion(fillColor, strokeColor) {
+            circle.setOptions({
+                fillColor: fillColor,
+                strokeColor: strokeColor
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Logo del ministerio -->
+            <a class="navbar-brand" href="#">
+                <img src="logo100.png" alt="Ministerio de Salud" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="quick-salud.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ultimas-novedades.html">Ultimas Novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Reseña.html">Reseña</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contactanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.html">Preguntas Frecuentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AgendarHora.php">Agenda tu hora</a>
+                    </li>
+                </ul>
+                <!-- Botón de Iniciar Sesión -->
+                <div class="d-flex">
+                    <a class="btn btn-outline-light" href="login2.html">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    
+    <!-- Título del mapa -->
+    <section id="titulo_mapa" class="mt-5 pt-5">
+        <h2 class="text-center"><strong>Servicios de Salud</strong></h2>
+        <h3 class="text-center"><strong>Aquí podrá visualizar los distintos Servicios de Salud disponibles según su localización</strong></h3>
+    </section>
+
+    <!-- Botón para centrar el mapa en la ubicación del usuario -->
+    <button class="geo-btn" onclick="centrarEnUbicacion()">Mostrar Mi Ubicación</button>
+
+    <!-- Mapa dinámico de Google Maps -->
+    <div id="map"></div>
+
+    <!-- Contenedor de los botones debajo del mapa -->
+    <div class="container mt-4 text-center">
+        <h3 class="text-center">Seleccione su tipo de atención</h3>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="boton btn-rojo" onclick="cambiarColorAtencion('#FF0000', '#AA0000')">ATENCIÓN INMEDIATA</button>
+            <button class="boton btn-amarillo" onclick="cambiarColorAtencion('#FFFF00', '#FFCC00')">COMPLEJIDAD MEDIA</button>
+            <button class="boton btn-verde" onclick="cambiarColorAtencion('#00FF00', '#008000')">CONDICIÓN NO URGENTE</button>
+        </div>
+    </div>
+    
+    <section id="comparacion-centros" class="container my-5">
+        <h2>Comparar Centros de Salud</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="centro1">Centro 1</label>
+                <select id="centro1" class="form-select">
+                    <option value="" disabled selected>Selecciona un centro</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="centro2">Centro 2</label>
+                <select id="centro2" class="form-select">
+                    <option value="" disabled selected>Selecciona un centro</option>
+                </select>
+            </div>
+        </div>
+        <button id="btn-comparar" class="btn btn-primary mt-3" onclick="compararCentros()">Comparar</button>
+    </section>
+    
+    <section id="resultado-comparacion" class="container my-5">
+        <div id="resultadoComparacion"></div>
+    </section>
+    
+    
+
+    <!-- Pie de página -->
+    <footer class="text-center py-4">
+        <p>&copy; 2024 Quick Salud</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
