@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario - Salud</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Logo del ministerio -->
+            <a class="navbar-brand" href="#">
+                <img src="logo100.png" alt="Ministerio de Salud" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="quick-salud.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Ultimasnovedades.html">Últimas Novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Reseña.html">Reseña</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contactanos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.html">Preguntas Frecuentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="AgendarHora.php">Preguntas Frecuentes</a>
+                    </li>
+                </ul>
+                <!-- Botón de Iniciar Sesión -->
+                <div class="d-flex">
+                    <a class="btn btn-outline-light" href="login2.html">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <h1>Perfil de Usuario</h1>
+    </header>
+
+    <section>
+        <h2>Preferencias de Búsqueda</h2>
+        <form id="preferences-form">
+            <label for="preferred-location">Región preferida:</label>
+            <select id="preferred-location" name="preferred-location">
+                <option value="">Seleccione una región</option>
+                <option value="arica">Arica y Parinacota</option>
+                <option value="tarapaca">Tarapacá</option>
+                <option value="antofagasta">Antofagasta</option>
+                <option value="atacama">Atacama</option>
+                <option value="coquimbo">Coquimbo</option>
+                <option value="valparaiso">Valparaíso</option>
+                <option value="metropolitana">Región Metropolitana</option>
+                <option value="ohiggins">O'Higgins</option>
+                <option value="maule">Maule</option>
+                <option value="nuble">Ñuble</option>
+                <option value="biobio">Biobío</option>
+                <option value="araucania">La Araucanía</option>
+                <option value="rios">Los Ríos</option>
+                <option value="lagos">Los Lagos</option>
+                <option value="aysen">Aysén</option>
+                <option value="magallanes">Magallanes y Antártica</option>
+            </select>
+
+            <label for="medical-service">Tipo de servicio médico:</label>
+            <select id="medical-service" name="medical-service">
+                <option value="">Seleccione un servicio</option>
+                <option value="hospital">Hospital</option>
+                <option value="clinica">Clínica</option>
+                <option value="centro-salud">Centro de Salud</option>
+                <option value="consultorio">Consultorio</option>
+                <option value="laboratorio">Laboratorio</option>
+                <option value="farmacia">Farmacia</option>
+            </select>
+
+            <label for="specialty">Especialidad médica preferida:</label>
+            <select id="specialty" name="specialty">
+                <option value="">Seleccione una especialidad</option>
+                <option value="cardiologia">Cardiología</option>
+                <option value="pediatria">Pediatría</option>
+                <option value="dermatologia">Dermatología</option>
+                <option value="neurologia">Neurología</option>
+                <option value="ginecologia">Ginecología</option>
+                <option value="traumatologia">Traumatología</option>
+                <option value="oftalmologia">Oftalmología</option>
+                <option value="urologia">Urología</option>
+            </select>
+
+            <button type="submit">Guardar Preferencias</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; Quick Salud</p>
+    </footer>
+
+    <script>
+        document.getElementById('preferences-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Preferencias guardadas');
+        });
+    </script>
+</body>
+</html>
