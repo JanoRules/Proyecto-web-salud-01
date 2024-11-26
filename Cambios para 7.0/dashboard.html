@@ -175,7 +175,7 @@
 
          // Añadir variables para el ícono del usuario y el destino
         const iconoUsuario = { 
-            url: "https://img.icons8.com/color/48/hospital.png", // Ícono para el usuario
+            url: "https://img.icons8.com/color/48/user.png", // Ícono para el usuario
             scaledSize: new google.maps.Size(40, 40),
         };
         let usuarioMarker; // Variable para el marcador del usuario 
@@ -495,9 +495,9 @@
         }
 
 
-// Función de seguimiento en tiempo real //////////////////
-function seguimientoTiempo(ruta) {
-    let intervalId;} // Variable para el intervalo de actualización
+    // Función de seguimiento en tiempo real //////////////////
+    function seguimientoTiempo(ruta) {
+        let intervalId;} // Variable para el intervalo de actualización
 
     // Función para actualizar el tiempo restante
     function actualizarTiempoRestante() {
@@ -534,9 +534,75 @@ function seguimientoTiempo(ruta) {
             );
         });
     }
-
-
     </script>
+
+    <script>
+        function checkNotifications2() {
+            fetch('get-notifications2.php')
+                .then(response => response.json())
+                .then(data2 => {
+                    if (data2.length > 0) {
+                        data2.forEach(notification2 => {
+                            showNotification2(notification2.mensaje);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error al obtener notificaciones2:', error));
+        }
+
+        function showNotification2(message2) {
+            const notification2 = document.createElement('div');
+            notification2.className = 'notification-popup2';
+            notification2.innerText = message2;
+
+            document.body.appendChild(notification2);
+
+            // Oculta la notificación después de 8 segundos
+            setTimeout(() => {
+                notification2.remove();
+            }, 8000);
+        }
+
+        // Llamada inicial y cada 2 minutos
+        window.addEventListener('load', function () {
+            checkNotifications2();
+            setInterval(checkNotifications2, 100000); // Cada 2 minutos aprox
+        });
+    </script>
+
+    <style>
+        .notification-popup2 {
+            position: fixed;
+            bottom: 20px;
+            right: 60px;
+            padding: 15px;
+            background-color: red; /* Fondo rojo */
+            color: white; /* Texto blanco */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0.95;
+            z-index: 1000;
+            animation: fade-in2 0.5s ease-in-out;
+        }
+        
+        /* Animación de entrada */
+        @keyframes fade-in2 {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 0.95;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    
+
+
+    
 
 </head>
 <body onload="initMap()">
@@ -567,12 +633,13 @@ function seguimientoTiempo(ruta) {
                         <a class="nav-link" href="FAQ.html">Preguntas Frecuentes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AgendarHora.html">Agenda tu hora</a>
+                        <a class="nav-link" href="AgendarHora.php">Agenda tu hora</a>
                     </li>
                 </ul>
                 <div class="nav">
                     <a href="logout.php"><button>Cerrar sesión</button></a>
                     <a href="update-user.html"><button>Usuario</button></a>
+                    <a href="ver_mensajes.php"><button>Mensajes</button></a>
                 </div>
             </div>
         </div>
