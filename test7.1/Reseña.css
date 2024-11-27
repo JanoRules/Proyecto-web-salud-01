@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0c0b34;
+    color: white;
+}
+
+.notificacion-oculta {
+    position: fixed;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+.notificacion-visible {
+    top: 20px;
+    opacity: 1;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0b34;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #444;
+    flex-wrap: wrap;
+}
+
+.navbar-logo img {
+    height: 5vh;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.navbar-menu li {
+    padding: 0.5rem 1rem;
+    border: 1px solid #9ca3c3;
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+.navbar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-login a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #0d2db9;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.navbar-login a:hover,
+.navbar-menu li a:hover {
+    background-color: #4f4f90;
+    transition: background-color 0.3s ease;
+}
+
+h2 {
+    width: 50%;
+    height: auto;
+    color: blue;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.rating input {
+    display: none; /* Ocultamos los radio buttons */
+}
+
+.rating label {
+    font-size: 2rem; /* Aumentamos el tamaño de las estrellas */
+    color: gray; /* Color inicial */
+    cursor: pointer; /* Cambia el cursor al pasar sobre las estrellas */
+    transition: color 0.2s ease; /* Transición suave al cambiar color */
+}
+
+.rating input:checked ~ label {
+    color: gold; /* Color dorado al seleccionar */
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+    color: gold; /* Cambia el color de las estrellas al pasar el mouse */
+}
+
+/* Espaciado para las pequeñas instrucciones */
+small.form-text {
+    text-align: center;
+    display: block;
+    margin-top: 0.5rem;
+}
